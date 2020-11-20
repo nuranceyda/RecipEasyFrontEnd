@@ -1,3 +1,4 @@
+const API_KEY = apiKey= "904d4a518d2c404a8907c2e69d7d52c"
 export async function renderhome() {
     const root = $('#root');
     const users = await axios({
@@ -12,7 +13,7 @@ export async function renderhome() {
             method: 'get',
             url: `https://cors-anywhere.herokuapp.com/https://recipeasy426.herokuapp.com/user/${users.data[i]}`
         })
-        $('#recipefeed').append(createRecipeView(user.data));
+        $('#recipefeed').append(createUserView(user.data));
     }
 }
 
@@ -31,7 +32,60 @@ export async function createUser(event) {
     console.log(result);
 };
 
-export function createRecipeView(user) {
+// this is to get a list of recipes with the ingredient search
+export async function getIngredientSearchItems(event) {
+    const searchRequest = event.value();
+    const result = await axios({
+        method: 'get',
+        //url: `https://cors-anywhere.herokuapp.com/https://recipeasy426.herokuapp.com/user/`,
+        url: 
+        data: {
+            firstName: "Well maybe",
+            lastName: "Dude",
+            favorites: [0, 2, 3],
+            diet: "help",
+        }
+    });
+    renderhome();
+    console.log(result);
+};
+
+// this is to get a list of recipes with the ingredient search
+export async function getComplexSearchItems(event) {
+    const searchRequest = event.value();
+    const result = await axios({
+        method: 'get',
+        //url: `https://cors-anywhere.herokuapp.com/https://recipeasy426.herokuapp.com/user/`,
+        data: {
+            firstName: "Well maybe",
+            lastName: "Dude",
+            favorites: [0, 2, 3],
+            diet: "help",
+        }
+    });
+    // This should be used for a page of information and the recipes to 
+    export async function getRecipeInformation(event) {
+        const searchRequest = event.value();
+        const result = await axios({
+            method: 'get',
+            //url: `https://cors-anywhere.herokuapp.com/https://recipeasy426.herokuapp.com/user/`,
+            data: {
+
+            }
+        });
+    renderhome();
+    console.log(result);
+};
+// This function is to create a user profile
+export async function createUserProfile() {
+
+} 
+// this function should be similar to the above function but will create 
+export async function createUserPassword() {
+
+}
+
+export function createUserView(user) {
     console.log(user);
     let recipeview = `<div class="card m-3" id ="${user.id}">
         <div class="card-content">
