@@ -1,4 +1,4 @@
-const API_KEY = apiKey= "904d4a518d2c404a8907c2e69d7d52c"
+
 export async function renderhome() {
     const root = $('#root');
     const users = await axios({
