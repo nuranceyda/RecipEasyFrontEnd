@@ -13,9 +13,7 @@
   </head>
 
   <body>
-    <h1>
-      Welcome to ingredient search!
-    </h1>
+
     <header>
       <div class="tabs">
         <ul>
@@ -31,25 +29,46 @@
         </ul>
       </div>
     </header>
+    <h1>
+        Welcome to Ingredient search!
+      </h1>
     <h2>
       Search by Ingredients!
     </h2>
+    <h3>
+      What's in your fridge?
+    </h3>
+    <p>
+      For example: If you have an apple and some sugar and want to find recipes, just type in "apple,sugar"
+    </p>
+    <p>
+      The search will use as many of the given ingredients as possible and will only need a few more ingredients
+    </p>
+    <p>
+      The limit for the amount of results for right now is 1.
+    </p>
     <div class = "formdiv">
    <form  id = "inputform">
      <input id ="ingSearch"  type ="text"> 
-        <button class="button is-primary">Submit</button>
+        <button  id = "ingButton" type="button">Submit</button>
    </form>
-    </div>
-    <section class="section has-background-white">
-      <div class="container">
-        <div class="columns is-mobile is-centered">
-          <!-- <button class = "button"></button> -->
-            <div id="recipefeed" class="column is-7">
-            </div>
-      </div>
-    </section>
+  </div>
+
+   <div id="recipeFeed"> </div>
+
+   <!--  <section class="section has-background-white">
+      <div class="container">
+        <div class="columns is-mobile is-centered">
+            <div id="recipefeed" class="column is-7">
+              </div>
+        </div>
+ </div> -->
+
+  
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- <script type="module" src="renderscript.js"></script> -->
+    <script type="module" src="ingredientSearch.js"></script>
     <script src="../node_modules/axios/dist/axios.js"></script>
   </body>
 </html>

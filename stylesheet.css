@@ -1,6 +1,4 @@
-#ingSearch {
 
-}
 
 .formdiv{
     margin: auto;
@@ -18,7 +16,14 @@
   box-sizing: border-box;
 }
 
-
-.h2{
-    has-text-centered
+h1 {
+    color:hsl(204, 86%, 53%);
+    font-size: 40px;
+    text-align: center
 }
+
+#recipeFeed {
+    display: inline-block;
+    margin: auto;
+}
+
