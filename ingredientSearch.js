@@ -1,6 +1,5 @@
 // this is to get a list of recipes with the ingredient search
 
-
 // Submit button after typing in ingredient stuff
 //THIS IS A TEMPLATE FOR HOW ITLL WORK
 // https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&apiKey=904d4a518d2c404a8907c2e69d7d52c8
@@ -41,10 +40,23 @@ export async function getIngredientSearchItems() {
     else {
         console.log("Ingredient Search Failed");
     }
-
 };
+// this should be hit when we click on the card and direct to the source URL
+export async function getRecipeInformation(id) {
+    const result = await axios ({
+        method: 'get',
+        url:`https://api.spoonacular.com/recipes/${id}/information?${token}$includeNutrition=true`
+    } )
+    if(result) {
+        console.log("successful call for recipe by ID")
+        console.log(result);
+    }
+}
 
-
+// this is get the name of the ingredients you didn't write out 
+export function createMissedIngredientNames(missedIngredients) {
+        let missedIngredientsView  =  `<div class="content">$You're missing {missedIngredients.title}</div>`
+}
 
 
 export function createRecipeView(recipe) {
@@ -54,7 +66,7 @@ export function createRecipeView(recipe) {
             <div class="media">
                 <div class="media-content">
                     <img src = ${recipe.image}>
-                    <p class="title is-6">@${recipe.title}</p>
+                    <p class="title is-6">${recipe.title}</p>
                 </div>
             </div>
             <div class="content">${recipe.missedIngredientCount}</div>

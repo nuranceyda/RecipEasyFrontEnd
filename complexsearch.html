@@ -28,37 +28,30 @@
         </ul>
       </div>
     </header>
-
     <h1>
         Welcome to Smart search!
       </h1>
     <h2>
-      Search by anything like cuisine, just type in Italian!
-      Or if you want 
+      Search by writing anything!
     </h2>
     <p>
-      For example: If you have an apple and some sugar and want to find recipes, just type in "apple,sugar"
+      For example: If you want a pasta recipe just type in pasta or Italian
     </p>
+ 
     <p>
-      The limit for the amount of results for right now is 1.
+      The limit for the amount of results for right now is 3.
     </p>
     <div class = "formdiv">
    <form  id = "inputform">
-     <input id ="ingSearch"  type ="text"> 
-        <button  id = "ingButton" type="button">Submit</button>
-
+     <input id ="compSearch"  type ="text"> 
+        <button  id = "compButton" type="button">Submit</button>
    </form>
-    </div>
-    <section class="section has-background-white">
-      <div class="container">
-        <div class="columns is-mobile is-centered">
-          <!-- <button class = "button"></button> -->
-            <div id="recipefeed" class="column is-7">
-            </div>
-      </div>
-    </section>
+  </div>
+
+   <div id="recipeFeed"> </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="module" src="ingredientSearch.js"></script>
+    <script type="module" src="complexSearch.js"></script>
     <script src="../node_modules/axios/dist/axios.js"></script>
   </body>
 </html>
