@@ -1,4 +1,5 @@
 // this is to get a list of recipes with the complex search
+const token = "&apiKey=bb99f95aa31943519d9b8717cfeb3a8e"
 
 // Submit button after typing in ingredient stuff
 //THIS IS A TEMPLATE FOR HOW ITLL WORK
@@ -8,7 +9,7 @@
 const submitButton = document.querySelector("#compButton");
 
 // select the limit of the amount of results
-const limit = "&number=3"
+const limit = "&number=1"
 
 //Button event listener to run the function when clicked
 submitButton.addEventListener('click', function (e) {
@@ -42,7 +43,8 @@ export async function getComplexSearchItems() {
             console.log("Inside for loop");
             console.log(i);
             let recipeData = result.data.results[i];
-            compFeed.append(createRecipeView(recipeData))
+            let source = await getRecipeInformation(recipeData.id);
+            compFeed.append(createRecipeView(recipeData,source))
             console.log("appended");
         }
     }
@@ -56,24 +58,36 @@ export async function getComplexSearchItems() {
 export async function getRecipeInformation(id) {
     const result = await axios ({
         method: 'get',
-        url:`https://api.spoonacular.com/recipes/${id}/information?${token}$includeNutrition=true`
+        url:`https://api.spoonacular.com/recipes/${id}/information?${token}&includeNutrition=false`
     } )
     if(result) {
         console.log("successful call for recipe by ID")
         console.log(result);
     }
+    return result.data;
 }
 
-// this is get the name of the ingredients you didn't write out 
-// export function createMissedIngredientNames(missedIngredients) {
-//         let missedIngredientsView  =  `<div class="content">$You're missing {missedIngredients.title}</div>`
-// }
+
+export function isitTrue(value) {
+    if(value) {
+        return "Yes"
+    }
+    return "No";
+}
 
 
-export function createRecipeView(recipe) {
+export function createRecipeView(recipe, source) {
+    let url = source.sourceUrl;
+    let isVegan = isitTrue(source.vegan);
+    let isGlutenFree = isitTrue(source.glutenFree)
+    let readyinTime = source.readyInMinutes;
+    let isDairyFree = isitTrue(source.dairyFree)
+    let amountOfServings = source.servings
+
     console.log("InsideRevipeView")
     console.log(recipe);
-    let recipeview = `<div class="card m-3" id ="${recipe.id}">
+    let recipeview =`
+    <div class="card m-3" id ="${recipe.id}">
         <div class="card-content">
             <div class="media">
                 <div class="media-content">
@@ -81,10 +95,18 @@ export function createRecipeView(recipe) {
                     <p class="title is-6">${recipe.title}</p>
                 </div>
             </div>
-            <div class="content">${recipe.calories}</div>
-        </div>
+            <strong> Your Main Missing Ingredients </strong>
+        <div class="content"><b>Vegan:</b> ${isVegan}</div>
+        <div class="content"><b>GlutenFree:</b> ${isGlutenFree}</div>
+        <div class="content"><b>DairyFree:</b> ${isDairyFree}</div>
+        <div class="content"><b>Servings:</b> ${amountOfServings}</div>
+        <div class="content"><b>Prep Time :</b> ${readyinTime} minutes</div>
+        <button class="button is-link is-light" onclick="window.location.href = '${url}';">See Full Info</button>
+
+    </div>
         <footer class="card-footer">`
     recipeview += `</footer ></div >`
+    console.log("do we get here");
     return recipeview;
 }
 
