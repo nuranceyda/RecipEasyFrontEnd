@@ -1,6 +1,5 @@
-// this is to get a list of recipes with the ingredient search
+// this is to get a list of recipes with the complex search
 
-const token = "&apiKey=904d4a518d2c404a8907c2e69d7d52c8"
 // Submit button after typing in ingredient stuff
 //THIS IS A TEMPLATE FOR HOW ITLL WORK
 // https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&apiKey=904d4a518d2c404a8907c2e69d7d52c8
@@ -20,8 +19,8 @@ submitButton.addEventListener('click', function (e) {
 
 //get the ingredient searches
 export async function getComplexSearchItems() {
-    let recipeFeed = $('#recipeFeed');
-    recipeFeed.empty();
+    let compFeed = $('#compFeed');
+    compFeed.empty();
     const compInput = document.querySelector("#compSearch").value;
     const result = await axios({
         method: 'get',
@@ -32,11 +31,19 @@ export async function getComplexSearchItems() {
 });
     // renderhome();
     if(result) {
-        console.log("successful call for compSearch")
-        console.log(result)
-        for(let i =0; i < result.data.length; i++ ) {
-            let recipeData = result.data[i];
-            recipeFeed.append(createRecipeView(recipeData))
+        // console.log("successful call for compSearch")
+        // console.log(result.results);
+        // console.log("result data is");
+        // console.log("result number is " + result.number)
+        //console.log(result.results[0].id);
+
+    
+        for(let i =0; i < result.data.results.length; i++ ) {
+            console.log("Inside for loop");
+            console.log(i);
+            let recipeData = result.data.results[i];
+            compFeed.append(createRecipeView(recipeData))
+            console.log("appended");
         }
     }
     else {
@@ -64,6 +71,7 @@ export async function getRecipeInformation(id) {
 
 
 export function createRecipeView(recipe) {
+    console.log("InsideRevipeView")
     console.log(recipe);
     let recipeview = `<div class="card m-3" id ="${recipe.id}">
         <div class="card-content">

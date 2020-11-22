@@ -13,6 +13,7 @@
   </head>
 
   <body>
+
     <header>
       <div class="tabs">
         <ul>
@@ -32,14 +33,19 @@
         Welcome to Smart search!
       </h1>
     <h2>
-      Search by writing anything!
+      Search by Ingredients!
     </h2>
+    <h3>
+      What's in your fridge?
+    </h3>
     <p>
-      For example: If you want a pasta recipe just type in pasta or Italian
+      For example: If you have an apple and some sugar and want to find recipes, just type in "apple,sugar"
     </p>
- 
     <p>
-      The limit for the amount of results for right now is 3.
+      The search will use as many of the given ingredients as possible and will only need a few more ingredients
+    </p>
+    <p>
+      The limit for the amount of results for right now is 1.
     </p>
     <div class = "formdiv">
    <form  id = "inputform">
@@ -48,7 +54,18 @@
    </form>
   </div>
 
-   <div id="recipeFeed"> </div>
+   <div id="compFeed"> </div>
+
+   <!--  <section class="section has-background-white">
+      <div class="container">
+        <div class="columns is-mobile is-centered">
+            <div id="recipefeed" class="column is-7">
+              </div>
+        </div>
+ </div> -->
+
+  
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="module" src="complexSearch.js"></script>
