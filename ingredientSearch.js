@@ -9,6 +9,7 @@ const submitButton = document.querySelector("#ingButton");
 
 // select the limit of the amount of results
 const limit = "&number=1"
+const autoLimit = "&number=1"
 
 //Button event listener to run the function when clicked
 submitButton.addEventListener('click', function () {
@@ -59,6 +60,19 @@ export async function getRecipeInformation(id) {
         console.log(result);
     }
     return result.data;
+}
+
+//helps with creating some autocomplete entries
+export async function autoCompleteSearch() {
+    const ingredientInput = document.querySelector("#ingSearch").value;
+    const result = await axios({
+        method: 'get',
+        //OFFICIAL PRODUCTION URL FOR HEROKU
+        //url: `https://cors-anywhere.herokuapp.com/https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientInput}${token}${limit}`,
+        //LOCAL TEST URL
+        url:`https://api.spoonacular.com/food/ingredients/autocomplete?${ingredientInput}${limit}query=${ingredientInput}`
+    } )
+    return result;
 }
 
 // this is get the name of the ingredients you didn't write out 
