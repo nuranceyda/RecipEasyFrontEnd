@@ -38,7 +38,7 @@
                     class="input"
                     type="text"
                     placeholder="Healthy User "
-                    name="username"
+                    id="usernameLogin"
                   />
                 </div>
               </div>
@@ -49,21 +49,14 @@
                     class="input"
                     type="password"
                     placeholder="Healthy Password"
-                    name="password"
+                    id="passwordLogin"
                   />
                 </div>
               </div>
+
               <div class="field">
                 <div class="control">
-                  <label class="checkbox">
-                    <input type="checkbox" name="remember" />
-                    Remember login?
-                  </label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <input class="button is-dark" type="submit" />
+                  <input id = "loginButton" class="button is-primary" type="submit" />
                 </div>
               </div>
             </form>
@@ -78,7 +71,7 @@
                     class="input"
                     type="text"
                     placeholder="Healthy User"
-                    name="username"
+                    id="usernameSignup"
                   />
                 </div>
               </div>
@@ -89,36 +82,39 @@
                     class="input"
                     type="password"
                     placeholder="Healthy Password"
+                    id = "passwordSignup"
                   />
                 </div>
               </div>
               <div class="field">
-                <label class="label">Repeat Password</label>
+                <label class="label">First Name</label>
                 <div class="control">
                   <input
                     class="input"
-                    type="password"
-                    placeholder="Healthy Password"
-                    name="password"
+                    type="text"
+                    placeholder="Healthy First Name"
+                    id="firstnameSignup"
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Last Name</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Healthy Last Name"
+                    id="lastnameSignup"
                   />
                 </div>
               </div>
 
-              <div class="field">
-                <label class="label">Account type</label>
-                <div class="control">
-                  <div class="select">
-                    <select name="accountType">
-                      <option>Student</option>
-                      <option>Teacher</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+
+
 
               <div class="field">
                 <div class="control">
-                  <input class="button is-dark" type="submit" />
+                  <input id ="signupButton" class="button is-primary" type="submit" />
                 </div>
               </div>
             </form>
@@ -127,7 +123,7 @@
       </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="module" src="ingredientSearch.js"></script>
+    <script type="module" src="login.js"></script>
     <script src="../node_modules/axios/dist/axios.js"></script>
   </body>
 </html>

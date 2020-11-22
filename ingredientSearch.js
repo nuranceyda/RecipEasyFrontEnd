@@ -11,11 +11,16 @@ const submitButton = document.querySelector("#ingButton");
 const limit = "&number=1"
 
 //Button event listener to run the function when clicked
-submitButton.addEventListener('click', function (e) {
+submitButton.addEventListener('click', function () {
     getIngredientSearchItems();
-
 })
 
+//for debouncing search
+// const debounce = (fn, delay) => {
+//         return function() {
+//             setTimeout(func, wait);
+//         };
+// }
 
 //get the ingredient searches
 export async function getIngredientSearchItems() {
