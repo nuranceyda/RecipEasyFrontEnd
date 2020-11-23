@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
     <link rel="stylesheet" href="stylesheet.css" />
-     <link
-        href="https://fonts.googleapis.com/css?family=Shrikhand&display=swap"
-        rel="stylesheet"
+    <link
+      href="https://fonts.googleapis.com/css?family=Shrikhand&display=swap"
+      rel="stylesheet"
     />
     <title>RecipEasy</title>
-    </head>
-<body>
+  </head>
+  <body>
     <header>
         <div class="tabs">
+          <ul>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li id = "login"><a href="login.html">Login</a></li>
-                <li><a href="info.html">Information</a></li>
-                 <li><a href="ingredientsearch.html">Ingredient Search</a></li>
-                <li><a href="complexSearch.html">Smart Search</a></li>
-                <li><a href="favorites.html">Favorites</a></li>
-                </ul>
-         </div>
-     </header>
-     <h1>
-         Your Favorite Recipes!
-     </h1>  
-     <h1>Please Log In To View Your Favorites!</h1>
-     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="module" src="removelogin.js"></script>
-</body>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="info.html">Information</a></li>
+              <li id="login"><a href="login.html">Login</a></li>
+              <li><a href="favorites.html">Favorites</a></li>
+              <li><a href="ingredientsearch.html">Ingredient Search</a></li>
+              <li><a href="complexSearch.html">Smart Search</a></li>
+            </ul>
+          </ul>
+        </div>
+      </header>
+      <div id = "profile" class="container">
+        <h1 class="title">Want to store your favorite recipes?</h1>
+        <h2 class="subtitle">Please create a profile and login!</h1>
+        </div>
+    
+    <div id="favoriteFeed"></div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="module" src="favorites.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+  </body>
 </html>

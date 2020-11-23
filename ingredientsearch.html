@@ -10,56 +10,63 @@
       rel="stylesheet"
     />
     <title>RecipEasy</title>
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+      data-auto-a11y="true"
+    ></script>
   </head>
 
   <body>
-
     <header>
       <div class="tabs">
         <ul>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li id = "login"><a href="login.html">Login</a></li>
-                <li><a href="info.html">Information</a></li>
-                <li><a href="ingredientsearch.html">Ingredient Search</a></li>
-                <li><a href="complexSearch.html">Smart Search</a></li>
-                <li><a href="favorites.html">Favorites</a></li>
-      
-              </ul>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="info.html">Information</a></li>
+            <li id="login"><a href="login.html">Login</a></li>
+            <li><a href="favorites.html">Favorites</a></li>
+            <li><a href="ingredientsearch.html">Ingredient Search</a></li>
+            <li><a href="complexSearch.html">Smart Search</a></li>
+          </ul>
         </ul>
       </div>
     </header>
-    <h1 id ="ingTitle1" class="title is-1 is-spaced">
-        Ingredient search
-      </h1>
-    <h2 class="subtitle is-3 is-spaced" >
-      Search by Ingredients in your home!
-    </h2>
-    <h3 class="title is-4 ">
-      Our search bar will find the recipe that has the closest ingredients to the one you have at home
+    <h1 id="ingTitle1" class="title is-1 is-spaced">Ingredient search</h1>
+    <h2 class="subtitle is-3 is-spaced">Search by Ingredients in your home!</h2>
+    <h3 class="title is-4">
+      Our search bar will find the recipe that has the closest ingredients to
+      the one you have at home
     </h3>
-    <h4 class = "subtitle is-5 ">
-      If all you have is an apple and cinnamon, just type in 'apple,cinnamon' and it will find the closest recipes with those ingredients
+    <h4 class="subtitle is-5">
+      If all you have is an apple and cinnamon, just type in 'apple,cinnamon'
+      and it will find the closest recipes with those ingredients
     </h4>
-    <div class = "formdiv">
-   <form  id = "inputform">
-     <input class="input is-large"  id ="ingSearch"  type ="text"> 
-        <button class="button is-info"   id = "ingButton" type="button">Submit</button>
-   </form>
-  </div>
+    <div class="formdiv">
+      <form id="inputform">
+        <input
+          class="input is-large"
+          id="ingSearch"
+          type="email"
+          list="autoCompList"
+          multiple
+        />
+        <datalist id="autoCompList" open="open"> </datalist>
+        <!-- <table class="table" id="autoCompTable"></table> -->
+        <button class="button is-info" id="ingButton" type="button">
+          Submit
+        </button>
+      </form>
+    </div>
 
-   <div id="recipeFeed"> </div>
+    <div id="recipeFeed"></div>
 
-   <!--  <section class="section has-background-white">
+    <!--  <section class="section has-background-white">
       <div class="container">
         <div class="columns is-mobile is-centered">
             <div id="recipefeed" class="column is-7">
               </div>
         </div>
  </div> -->
-
-  
-
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="module" src="ingredientSearch.js"></script>
