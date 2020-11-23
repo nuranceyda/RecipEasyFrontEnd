@@ -40,7 +40,7 @@ signupButton.addEventListener("click", async function (e) {
       firstnameSignup,
       lastnameSignup
     );
-    alert("Successful User creation!");
+    alert("Successful User creation! Now Please Login!");
     //console.log(result.data);
   }
 });
