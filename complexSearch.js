@@ -1,5 +1,5 @@
 // this is to get a list of recipes with the complex search
-const token = "&apiKey=6facd6c9578d47ebb7ffbf93f799dcda";
+const token = "&apiKey=36ac0a8472444e0d93fc141d6c882275";
 
 // Submit button after typing in ingredient stuff
 //THIS IS A TEMPLATE FOR HOW ITLL WORK
@@ -49,7 +49,7 @@ export async function getComplexSearchItems() {
       let recipeData = result.data.results[i];
       let source = await getRecipeInformation(recipeData.id);
       compFeed.append(createRecipeView(recipeData, source));
-      console.log($(`#favoriteButton${recipeData.id}`));
+      // console.log($(`#favoriteButton${recipeData.id}`));
       $(`#favoriteButton${recipeData.id}`).on(
         "click",
         { id: recipeData.id },
@@ -138,7 +138,7 @@ export async function userUpdate(event) {
           console.log(user.favorites)
           alert("Successfully added to favorites");
       updateUserFavorites(event.data.id, user);
-      user.favorites.push(event.data.id);
+      //user.favorites.push(event.data.id);
       localStorage.setItem("user", JSON.stringify(user));
         }
     }

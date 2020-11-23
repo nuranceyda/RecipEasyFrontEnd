@@ -20,10 +20,10 @@ signupButton.addEventListener("click", async function (e) {
   let passwordSignup = $("#passwordSignup").val();
   let firstnameSignup = $("#firstnameSignup").val();
   let lastnameSignup = $("#lastnameSignup").val();
-  console.log("insanity");
+  //console.log("insanity");
   let users = await getAllUserNames();
   let userData = users.data;
-  console.log(userData);
+  //console.log(userData);
   let creatable = true;
   for (let i = 0; i < userData.length; i++) {
     if (userData[i] == usernameSignup) {
@@ -40,7 +40,8 @@ signupButton.addEventListener("click", async function (e) {
       firstnameSignup,
       lastnameSignup
     );
-    console.log(result.data);
+    alert("Successful User creation!");
+    //console.log(result.data);
   }
 });
 

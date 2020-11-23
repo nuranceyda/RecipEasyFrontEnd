@@ -37,6 +37,7 @@ h1 {
 }
 h2 {
   text-align: center;
+  padding: 10px;
 }
 h4 {
   text-align: center;
@@ -77,4 +78,33 @@ li {
 
 .cardimage {
   width: 400px;
+}
+
+.mainImg {
+  width:100%;
+  overflow:hidden; /* contain floats */
+  height:auto;
+}
+
+.mainPageSubtitles {
+  text-align: center;
+}
+
+#getStarted{
+  background: #848e40;
+}
+#signupButton{
+  background: #848e40;
+}
+
+#loginButton{
+  background: #848e40;
+}
+
+#ingButton{
+  background: #848e40;
+}
+#compButton{ 
+   background: #848e40;
+
 }

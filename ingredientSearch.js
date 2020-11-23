@@ -1,7 +1,7 @@
 // this is to get a list of recipes with the ingredient search
-const token = "&apiKey=6facd6c9578d47ebb7ffbf93f799dcda";
+const token = "&apiKey=36ac0a8472444e0d93fc141d6c882275";
 //this is for autocomplete
-const token2 = "apiKey=6facd6c9578d47ebb7ffbf93f799dcda";
+const token2 = "apiKey=36ac0a8472444e0d93fc141d6c882275";
 // Submit button after typing in ingredient stuff
 //THIS IS A TEMPLATE FOR HOW ITLL WORK
 // https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&apiKey=904d4a518d2c404a8907c2e69d7d52c8

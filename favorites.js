@@ -1,4 +1,4 @@
-const token = "&apiKey=6facd6c9578d47ebb7ffbf93f799dcda";
+const token = "&apiKey=36ac0a8472444e0d93fc141d6c882275";
 
 let user = JSON.parse(localStorage.getItem("user"));
 
@@ -28,6 +28,7 @@ export function renderpage() {
       localStorage.setItem("user", JSON.stringify(null));
       window.location.replace("login.html");
     });
+
   }
 }
 
@@ -40,10 +41,16 @@ export async function renderfavorites() {
   let recipeFeed = $("#favoriteFeed");
   //recipeFeed.empty();
   let favorites = user.favorites;
-  console.log(user.favorites);
+  console.log("favorites are",user.favorites);
   for (let i = 0; i < favorites.length; i++) {
     let recipe = await getRecipeInformation(favorites[i]);
     recipeFeed.append(createRecipeView(recipe));
+    console.log("inside loop the id value is" + user.favorites[i])
+    $(`#removeButton${recipe.id}`).on(
+      "click",
+      { id: recipe.id},
+      userUpdate
+    );
   }
 }
 
@@ -86,7 +93,7 @@ export function createRecipeView(source) {
         <div class="content"><b>Servings:</b> ${amountOfServings}</div>
         <div class="content"><b>Prep Time :</b> ${readyinTime} minutes</div>
         <button class="button is-link is-light" onclick="window.location.href = '${url}';">See Full Info</button>
-        <button class="button is-small is-danger" id="favoriteButton${source.id}">X</button>
+        <button class="button is-small is-danger" id="removeButton${source.id}">X</button>
     </div></div >`;
   return recipeview;
 }
@@ -96,4 +103,42 @@ export function isitTrue(value) {
     return "Yes";
   }
   return "No";
+}
+
+export async function userUpdate(event) {
+  alert("attempting to remove" +event.data.id + " to favorites");
+  //here we need to do another if else statement to check if the recipe has already been in the users favorites
+  //user.favorites
+
+    alert("Successfully removed from favorites");
+    updateUserFavorites(event.data.id, user);
+    //user.favorites.push(event.data.id);
+    localStorage.setItem("user", JSON.stringify(user));
+    
+  }
+  
+// test function to make sure that searching is working
+export async function updateUserFavorites(itemID, user) {
+  let favorites = user.favorites;
+  console.log("ABOUT TO REMOVE");
+  for(let i =0; i <favorites.length; i++) {
+    if(favorites[i]== itemID) {
+      console.log(favorites[i]);
+      console.log(itemID);
+      favorites.splice(i,1)
+      console.log("removed it from fave array")
+    }
+  }
+  //favorites.push(itemID);
+  console.log(favorites);
+  let name = user.username;
+  console.log(name);
+  const result = await axios({
+    method: "put",
+    url: `https://recipeasy426.herokuapp.com/user/${name}`,
+    data: {
+      favorites: favorites,
+    },
+  });
+  console.log(result);
 }
