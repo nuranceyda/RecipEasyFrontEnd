@@ -1,5 +1,5 @@
 // this is to get a list of recipes with the complex search
-const token = "&apiKey=aeb8217538d04be0bd9f068cb7f5903a";
+const token = "&apiKey=0c93c77f484441d0a44430bc6263cec2";
 
 // Submit button after typing in ingredient stuff
 //THIS IS A TEMPLATE FOR HOW ITLL WORK
@@ -95,7 +95,6 @@ export function createRecipeView(recipe, source) {
                     <p class="title is-6">${recipe.title}</p>
                 </div>
             </div>
-            <strong> Your Main Missing Ingredients </strong>
         <div class="content"><b>Vegan:</b> ${isVegan}</div>
         <div class="content"><b>GlutenFree:</b> ${isGlutenFree}</div>
         <div class="content"><b>DairyFree:</b> ${isDairyFree}</div>
