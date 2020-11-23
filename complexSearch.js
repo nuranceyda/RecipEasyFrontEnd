@@ -100,7 +100,6 @@ export function createRecipeView(recipe, source) {
                     <p class="title is-6">${recipe.title}</p>
                 </div>
             </div>
-            <strong> Your Main Missing Ingredients </strong>
         <div class="content"><b>Vegan:</b> ${isVegan}</div>
         <div class="content"><b>GlutenFree:</b> ${isGlutenFree}</div>
         <div class="content"><b>DairyFree:</b> ${isDairyFree}</div>
