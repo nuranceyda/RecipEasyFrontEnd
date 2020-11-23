@@ -1,5 +1,5 @@
 // this is to get a list of recipes with the complex search
-const token = "&apiKey=aeb8217538d04be0bd9f068cb7f5903a";
+const token = "&apiKey=6facd6c9578d47ebb7ffbf93f799dcda";
 
 // Submit button after typing in ingredient stuff
 //THIS IS A TEMPLATE FOR HOW ITLL WORK
@@ -49,10 +49,15 @@ export async function getComplexSearchItems() {
       let recipeData = result.data.results[i];
       let source = await getRecipeInformation(recipeData.id);
       compFeed.append(createRecipeView(recipeData, source));
-      console.log("appended");
+      console.log($(`#favoriteButton${recipeData.id}`));
+      $(`#favoriteButton${recipeData.id}`).on(
+        "click",
+        { id: recipeData.id },
+        userUpdate
+      );
     }
   } else {
-    console.log("comp Search Failed");
+    console.log("Ingredient Search Failed");
   }
 }
 
@@ -102,7 +107,7 @@ export function createRecipeView(recipe, source) {
         <div class="content"><b>Servings:</b> ${amountOfServings}</div>
         <div class="content"><b>Prep Time :</b> ${readyinTime} minutes</div>
         <button class="button is-link is-light" onclick="window.location.href = '${url}';">See Full Info</button>
-
+        <button class="button is-warning is-rounded" id="favoriteButton${recipe.id}"><i class="fas fa-star"></i></button>
     </div>
         <footer class="card-footer">`;
   recipeview += `</footer ></div >`;
@@ -119,3 +124,40 @@ export async function sayHey() {
 //     $("#ingButton").on("click", getIngredientSearchItems())
 //     console.log("clicked");
 // })
+export async function userUpdate(event) {
+    alert("attempting to add" +event.data.id + " to favorites");
+    //here we need to do another if else statement to check if the recipe has already been in the users favorites
+    //user.favorites
+    if (user == null) {
+      alert("please login");
+    } else {
+  
+        if(user.favorites.includes(event.data.id)) {
+            alert("You already have this in your favorites ");
+        }
+        else {
+          console.log(user.favorites)
+          alert("Successfully added to favorites");
+      updateUserFavorites(event.data.id, user);
+      user.favorites.push(event.data.id);
+      localStorage.setItem("user", JSON.stringify(user));
+        }
+    }
+  }
+
+  // test function to make sure that searching is working
+export async function updateUserFavorites(itemID, user) {
+    let favorites = user.favorites;
+    favorites.push(itemID);
+    console.log(favorites);
+    let name = user.username;
+    console.log(name);
+    const result = await axios({
+      method: "put",
+      url: `https://recipeasy426.herokuapp.com/user/${name}`,
+      data: {
+        favorites: favorites,
+      },
+    });
+    console.log(result);
+  }

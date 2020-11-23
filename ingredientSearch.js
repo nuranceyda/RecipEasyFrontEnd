@@ -1,7 +1,7 @@
 // this is to get a list of recipes with the ingredient search
-const token = "&apiKey=aeb8217538d04be0bd9f068cb7f5903a";
+const token = "&apiKey=6facd6c9578d47ebb7ffbf93f799dcda";
 //this is for autocomplete
-const token2 = "apiKey=aeb8217538d04be0bd9f068cb7f5903a";
+const token2 = "apiKey=6facd6c9578d47ebb7ffbf93f799dcda";
 // Submit button after typing in ingredient stuff
 //THIS IS A TEMPLATE FOR HOW ITLL WORK
 // https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&apiKey=904d4a518d2c404a8907c2e69d7d52c8
@@ -213,15 +213,23 @@ export function createRecipeView(recipe, source) {
 }
 
 export async function userUpdate(event) {
-  alert(event.data.id);
+  alert("attempting to add" +event.data.id + " to favorites");
   //here we need to do another if else statement to check if the recipe has already been in the users favorites
   //user.favorites
   if (user == null) {
     alert("please login");
   } else {
+
+      if(user.favorites.includes(event.data.id)) {
+          alert("You already have this in your favorites ");
+      }
+      else {
+        console.log(user.favorites)
+        alert("Successfully added to favorites");
     updateUserFavorites(event.data.id, user);
-    user.favorites.push(event.data.id);
+    //user.favorites.push(event.data.id);
     localStorage.setItem("user", JSON.stringify(user));
+      }
   }
 }
 

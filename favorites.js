@@ -1,4 +1,4 @@
-const token = "&apiKey=0c93c77f484441d0a44430bc6263cec2";
+const token = "&apiKey=6facd6c9578d47ebb7ffbf93f799dcda";
 
 let user = JSON.parse(localStorage.getItem("user"));
 
@@ -86,7 +86,7 @@ export function createRecipeView(source) {
         <div class="content"><b>Servings:</b> ${amountOfServings}</div>
         <div class="content"><b>Prep Time :</b> ${readyinTime} minutes</div>
         <button class="button is-link is-light" onclick="window.location.href = '${url}';">See Full Info</button>
-
+        <button class="button is-small is-danger" id="favoriteButton${source.id}">X</button>
     </div></div >`;
   return recipeview;
 }
