@@ -1,5 +1,7 @@
 // this is to get a list of recipes with the ingredient search
 const token = "&apiKey=bb99f95aa31943519d9b8717cfeb3a8e"
+//this is for autocomplete 
+const token2 = "apiKey=bb99f95aa31943519d9b8717cfeb3a8e"
 // Submit button after typing in ingredient stuff
 //THIS IS A TEMPLATE FOR HOW ITLL WORK
 // https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&apiKey=904d4a518d2c404a8907c2e69d7d52c8
@@ -9,7 +11,15 @@ const submitButton = document.querySelector("#ingButton");
 
 // select the limit of the amount of results
 const limit = "&number=1"
-const autoLimit = "&number=1"
+const autoLimit = "&number=2"
+//let user = localStorage.getItem('user')
+//console.log(JSON.parse(user));
+
+let user = JSON.parse(localStorage.getItem('user'));
+if (user != null){
+    const login = document.querySelector("#login");
+    login.remove();
+}
 
 //Button event listener to run the function when clicked
 submitButton.addEventListener('click', function () {
@@ -62,23 +72,43 @@ export async function getRecipeInformation(id) {
     return result.data;
 }
 
+//on keypress search
 //helps with creating some autocomplete entries
-export async function autoCompleteSearch() {
-    const ingredientInput = document.querySelector("#ingSearch").value;
-    const result = await axios({
-        method: 'get',
-        //OFFICIAL PRODUCTION URL FOR HEROKU
-        //url: `https://cors-anywhere.herokuapp.com/https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientInput}${token}${limit}`,
-        //LOCAL TEST URL
-        url:`https://api.spoonacular.com/food/ingredients/autocomplete?${ingredientInput}${limit}query=${ingredientInput}`
-    } )
+export async function autoCompleteSearch(searchValue) {
+        let searchesArray = [];
+        console.log("search value is", searchValue);
+        const result = await axios({
+            method: 'get',
+            //OFFICIAL PRODUCTION URL FOR HEROKU
+            //url: `https://cors-anywhere.herokuapp.com/https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientInput}${token}${limit}`,
+            //LOCAL TEST URL
+            url:`https://api.spoonacular.com/food/ingredients/autocomplete?${token2}${autoLimit}&query=${searchValue}`
+        } )
     return result;
-}
+    }
 
-// this is get the name of the ingredients you didn't write out 
-// export function createMissedIngredientNames(missedIngredients) {
-//         let missedIngredientsView  =  `<div class="content">$You're missing {missedIngredients.name}</div>`
-// }
+    let searchField = document.querySelector("#ingSearch");
+    let searchArray = [];
+
+    searchField.addEventListener('keyup',async function(e) {
+        let currentValue = searchField.value;
+        console.log(currentValue)
+        let info = await autoCompleteSearch(currentValue);
+        // console.log(info)
+        // console.log(info.data)
+        // console.log(info.data[0].name);
+        
+        setTimeout(function() {
+        if(currentValue=== searchField.value) {
+            for(let i =0; i <info.data.length; i++) {
+                searchArray.push(info.data[i].name);
+            }
+            console.log(searchArray);
+        }
+   ; },500)
+   searchArray = []
+})
+
 
 //theres probably an easier way for this lmfao
 export function isitTrue(value) {

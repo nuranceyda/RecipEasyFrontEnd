@@ -11,6 +11,15 @@ const submitButton = document.querySelector("#compButton");
 // select the limit of the amount of results
 const limit = "&number=1"
 
+
+let user = JSON.parse(localStorage.getItem('user'));
+console.log(user);
+if (user != null){
+    const login = document.querySelector("#login");
+    login.remove();
+}
+
+
 //Button event listener to run the function when clicked
 submitButton.addEventListener('click', function (e) {
     getComplexSearchItems();

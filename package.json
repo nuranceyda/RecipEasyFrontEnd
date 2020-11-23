@@ -10,6 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.0",
-    "bulma": "^0.9.1"
+    "axios-cookiejar-support": "^1.0.1",
+    "bulma": "^0.9.1",
+    "npx": "^10.2.2",
+    "requirejs": "^2.3.6",
+    "tough-cookie": "^4.0.0"
   }
 }
