@@ -124,7 +124,6 @@ export async function sayHey() {
 //     console.log("clicked");
 // })
 export async function userUpdate(event) {
-    alert("attempting to add" +event.data.id + " to favorites");
     //here we need to do another if else statement to check if the recipe has already been in the users favorites
     //user.favorites
     if (user == null) {

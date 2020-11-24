@@ -95,7 +95,7 @@ export function createRecipeView(source) {
         <button class="button is-link is-light" onclick="window.location.href = '${url}';">See Full Info</button>
         <button class="button is-small is-danger" id="removeButton${source.id}">X</button>
     </div></div >`;
-  return recipeview;
+  return recipeview;å
 }
 
 export function isitTrue(value) {
@@ -106,7 +106,6 @@ export function isitTrue(value) {
 }
 
 export async function userUpdate(event) {
-  alert("attempting to remove" +event.data.id + " to favorites");
   //here we need to do another if else statement to check if the recipe has already been in the users favorites
   //user.favorites
 
@@ -117,7 +116,7 @@ export async function userUpdate(event) {
     
   }
   
-// test function to make sure that searching is working
+// used to remove 
 export async function updateUserFavorites(itemID, user) {
   let favorites = user.favorites;
   console.log("ABOUT TO REMOVE");
@@ -127,6 +126,11 @@ export async function updateUserFavorites(itemID, user) {
       console.log(itemID);
       favorites.splice(i,1)
       console.log("removed it from fave array")
+      //console.log(`.${itemID}`)
+      console.log('#' + itemID)
+      $('#' + itemID).remove()
+
+      //console.log("removed it from DOM")
     }
   }
   //favorites.push(itemID);
